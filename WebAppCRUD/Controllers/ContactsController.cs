@@ -97,5 +97,10 @@ namespace WebAppCRUD.Controllers
         {
             return _context.Contacts.Any(e => e.Id == id);
         }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
     }
 }
