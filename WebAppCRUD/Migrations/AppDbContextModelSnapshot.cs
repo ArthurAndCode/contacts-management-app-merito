@@ -29,6 +29,11 @@ namespace WebAppCRUD.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ContactType")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("varchar(21)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -44,6 +49,25 @@ namespace WebAppCRUD.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
+
+                    b.HasDiscriminator<string>("ContactType").HasValue("Contact");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("WebAppCRUD.Models.BusinessContact", b =>
+                {
+                    b.HasBaseType("WebAppCRUD.Models.Contact");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasDiscriminator().HasValue("BusinessContact");
                 });
 #pragma warning restore 612, 618
         }

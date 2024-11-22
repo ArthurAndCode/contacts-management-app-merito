@@ -1,8 +1,7 @@
-using WebAppCRUD.Data;
-using WebAppCRUD.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using WebAppCRUD.Data;
+using WebAppCRUD.Models;
 
 namespace WebAppCRUD.Controllers
 {
@@ -39,12 +38,32 @@ namespace WebAppCRUD.Controllers
             return View(contact);
         }
 
+        public IActionResult CreateBusiness()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateBusiness(BusinessContact businessContact)
+        {
+            if (!ModelState.IsValid) return View(businessContact);
+            _context.Add(businessContact);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
 
             var contact = await _context.Contacts.FindAsync(id);
             if (contact == null) return NotFound();
+
+            if (contact is BusinessContact businessContact)
+            {
+                return View("EditBusiness", businessContact);
+            }
 
             return View(contact);
         }
@@ -59,7 +78,15 @@ namespace WebAppCRUD.Controllers
             {
                 try
                 {
-                    _context.Update(contact);
+                    if (contact is BusinessContact businessContact)
+                    {
+                        _context.Update(businessContact);
+                    }
+                    else
+                    {
+                        _context.Update(contact);
+                    }
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -69,6 +96,7 @@ namespace WebAppCRUD.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(contact);
         }
 
@@ -76,8 +104,7 @@ namespace WebAppCRUD.Controllers
         {
             if (id == null) return NotFound();
 
-            var contact = await _context.Contacts
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var contact = await _context.Contacts.FirstOrDefaultAsync(m => m.Id == id);
             if (contact == null) return NotFound();
 
             return View(contact);
@@ -97,7 +124,7 @@ namespace WebAppCRUD.Controllers
         {
             return _context.Contacts.Any(e => e.Id == id);
         }
-
+        
         public IActionResult Privacy()
         {
             return View();
