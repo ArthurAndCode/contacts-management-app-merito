@@ -14,11 +14,27 @@ namespace WebAppCRUD.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
+    
             var contacts = await _context.Contacts.ToListAsync();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                contacts = contacts.Where(c => c.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                               || c.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                               || c.PhoneNumber.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                               || (c is BusinessContact bc && 
+                                                   (bc.CompanyName.Contains(searchString, StringComparison.OrdinalIgnoreCase) 
+                                                    || bc.Position.Contains(searchString, StringComparison.OrdinalIgnoreCase))))
+                    .ToList();
+            }
+
             return View(contacts);
         }
+
+
 
         public IActionResult Create()
         {
