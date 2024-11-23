@@ -5,37 +5,15 @@ using WebAppCRUD.Models;
 
 namespace WebAppCRUD.Controllers
 {
-    public class ContactsController : Controller
+    public class ContactsController(AppDbContext context) : Controller
     {
-        private readonly AppDbContext _context;
-
-        public ContactsController(AppDbContext context)
-        {
-            _context = context;
-        }
-
         public async Task<IActionResult> Index(string? searchString)
         {
             ViewData["CurrentFilter"] = searchString;
-    
-            var contacts = await _context.Contacts.ToListAsync();
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                contacts = contacts.Where(c => c.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                                               || c.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                                               || c.PhoneNumber.Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                                               || (c is BusinessContact bc && 
-                                                   (bc.CompanyName.Contains(searchString, StringComparison.OrdinalIgnoreCase) 
-                                                    || bc.Position.Contains(searchString, StringComparison.OrdinalIgnoreCase))))
-                    .ToList();
-            }
-
+            var contacts = await context.Contacts.ToListAsync();
+            contacts = SearchContacts(searchString, contacts);
             return View(contacts);
         }
-
-
-
         public IActionResult Create()
         {
             return View();
@@ -45,13 +23,10 @@ namespace WebAppCRUD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Contact contact)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(contact);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(contact);
+            if (!ModelState.IsValid) return View(contact);
+            context.Add(contact);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult CreateBusiness()
@@ -64,63 +39,60 @@ namespace WebAppCRUD.Controllers
         public async Task<IActionResult> CreateBusiness(BusinessContact businessContact)
         {
             if (!ModelState.IsValid) return View(businessContact);
-            _context.Add(businessContact);
-            await _context.SaveChangesAsync();
+            context.Add(businessContact);
+            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
-
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact == null) return NotFound();
-
-            if (contact is BusinessContact businessContact)
+            var contact = await context.Contacts.FindAsync(id);
+            return contact switch
             {
-                return View("EditBusiness", businessContact);
-            }
-
-            return View(contact);
+                null => NotFound(),
+                BusinessContact businessContact => View("EditBusiness", businessContact),
+                _ => View(contact)
+            };
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Contact contact)
         {
-            if (id != contact.Id) return NotFound();
+            if (id != contact.Id) 
+                return NotFound();
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) 
+                return View(contact);
+
+            try
             {
-                try
-                {
-                    if (contact is BusinessContact businessContact)
-                    {
-                        _context.Update(businessContact);
-                    }
-                    else
-                    {
-                        _context.Update(contact);
-                    }
-
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ContactExists(contact.Id)) return NotFound();
-                    throw;
-                }
+                await UpdateContact(contact);
                 return RedirectToAction(nameof(Index));
             }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ContactExists(contact.Id)) 
+                    return NotFound();
 
-            return View(contact);
+                throw;
+            }
         }
+
+        private async Task UpdateContact(Contact contact)
+        {
+            var entity = contact is BusinessContact businessContact ? (Contact)businessContact : contact;
+            context.Update(entity);
+            await context.SaveChangesAsync();
+        }
+
 
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
 
-            var contact = await _context.Contacts.FirstOrDefaultAsync(m => m.Id == id);
+            var contact = await context.Contacts.FirstOrDefaultAsync(m => m.Id == id);
             if (contact == null) return NotFound();
 
             return View(contact);
@@ -130,17 +102,33 @@ namespace WebAppCRUD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var contact = await _context.Contacts.FindAsync(id);
-            _context.Contacts.Remove(contact);
-            await _context.SaveChangesAsync();
+            var contact = await context.Contacts.FindAsync(id);
+            if (contact != null) context.Contacts.Remove(contact);
+            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ContactExists(int id)
         {
-            return _context.Contacts.Any(e => e.Id == id);
+            return context.Contacts.Any(e => e.Id == id);
         }
-        
+
+        private static List<Contact> SearchContacts(string? searchString, List<Contact> contacts)
+        {
+            if (string.IsNullOrEmpty(searchString)) 
+                return contacts;
+
+            return contacts.Where(c => 
+                c.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+                c.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+                c.PhoneNumber.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+                (c is BusinessContact bc && 
+                 (bc.CompanyName.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+                  bc.Position.Contains(searchString, StringComparison.OrdinalIgnoreCase)))
+            ).ToList();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
