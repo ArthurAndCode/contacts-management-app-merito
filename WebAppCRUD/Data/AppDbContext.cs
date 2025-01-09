@@ -19,4 +19,9 @@ namespace WebAppCRUD.Data
             base.OnModelCreating(modelBuilder);
         }
     }
+    public class AppDbContext : IdentityDbContext<IdentityUser>
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) { }
+    }
 }
