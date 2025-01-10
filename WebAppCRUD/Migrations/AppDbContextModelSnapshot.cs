@@ -46,13 +46,39 @@ namespace WebAppCRUD.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Contacts");
 
                     b.HasDiscriminator<string>("ContactType").HasValue("Contact");
 
                     b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("WebAppCRUD.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("WebAppCRUD.Models.BusinessContact", b =>
@@ -68,6 +94,22 @@ namespace WebAppCRUD.Migrations
                         .HasColumnType("longtext");
 
                     b.HasDiscriminator().HasValue("BusinessContact");
+                });
+
+            modelBuilder.Entity("WebAppCRUD.Models.Contact", b =>
+                {
+                    b.HasOne("WebAppCRUD.Models.User", "User")
+                        .WithMany("Contacts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebAppCRUD.Models.User", b =>
+                {
+                    b.Navigation("Contacts");
                 });
 #pragma warning restore 612, 618
         }

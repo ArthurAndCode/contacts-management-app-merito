@@ -1,6 +1,7 @@
-@model WebAppCRUD.Models.RegisterViewModel
+@model WebAppCRUD.Models.User
 
 <h2>Register</h2>
+
 <form asp-action="Register" method="post">
     <div>
         <label asp-for="Email"></label>
@@ -8,14 +9,15 @@
         <span asp-validation-for="Email"></span>
     </div>
     <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
-        <span asp-validation-for="Password"></span>
+        <label asp-for="PasswordHash"></label>
+        <input asp-for="PasswordHash" type="password" />
+        <span asp-validation-for="PasswordHash"></span>
     </div>
     <div>
         <label asp-for="ConfirmPassword"></label>
         <input asp-for="ConfirmPassword" type="password" />
         <span asp-validation-for="ConfirmPassword"></span>
     </div>
-    <button type="submit">Register</button>
+    <button type="submit" class="btn btn-secondary">Register</button>
+    <a asp-action="Login" class="btn btn-secondary">Sign in</a>
 </form>

@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 // Configure MySQL
@@ -12,14 +11,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 32))));
 
-builder.Services.AddIdentity<identityUser, IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
-
-builder.Services.ConfigureApplicationCookie(options =>
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
 {
-    options.LoginPath = "/Account/Login";
-    options.LogoutPath = "/Account/Logout";
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
 });
 
 var app = builder.Build();
@@ -35,6 +32,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 

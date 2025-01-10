@@ -1,0 +1,18 @@
+@model WebAppCRUD.Models.User
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post">
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="PasswordHash"></label>
+        <input asp-for="PasswordHash" type="password" />
+        <span asp-validation-for="PasswordHash"></span>
+    </div>
+    <button type="submit" class="btn btn-secondary">Login</button>
+    <a asp-action="Register" class="btn btn-secondary">Sign up</a>
+</form>
