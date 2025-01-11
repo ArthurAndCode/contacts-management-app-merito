@@ -12,7 +12,7 @@
 ### <a id="1"> 1. Wstęp
 
 Przedmiotem niniejszej dokumentacji technicznej jest aplikacja, zapewnijąca możliwość zarzadzania kontaktami użytkowników, mogą oni dodawać, odczytywać, edytować i usuwanć kontakty indywidualne, jak i biznesowe.
-Dostęp do osobistej listy kontaktów zapewnia system rejestracji i logowania
+Dostęp do osobistej listy kontaktów zapewnia system rejestracji i logowania.
 
 ### <a id="2">2. Założenia i zastosowanie aplikacji
 
