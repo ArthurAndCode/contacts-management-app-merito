@@ -2,7 +2,7 @@
 
 ### Spis treści
 
-1. Wstęp
+1. [Wstęp](#wstęp)
 2. Założenia i zastosowanie aplikacji
 3. Użyte zależności, technologie oraz środowisko uruchomieniowe programu
 4. Sposób instalacji i uruchomienia
