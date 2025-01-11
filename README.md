@@ -4,7 +4,7 @@
 
 1. [Wstęp](#1)
 2. [Założenia i zastosowanie aplikacji](#2)
-3. [Użyte zależności, technologie oraz środowisko uruchomieniowe programu](#3)
+3. [Użyte Technologie](#3)
 4. [Sposób instalacji i uruchomienia](#4)
 5. [Obsługa aplikacji oraz jej funkcje](#5)
 6. [Podsumowanie](#6)
@@ -19,12 +19,29 @@ Dostęp do osobistej listy kontaktów zapewnia system rejestracji i logowania.
 Program w swym założeniu ma pomóc we wprowadzaniu i zapisywaniu nowych kontaktów, a także w ich wygodnym odczycie i modyfikacji. 
 Bardzo dobrze sprawdza się w sytuacji, gdy np. przedstawiciel handlowy dużej firmy chce mieć w jednym miejscu wszystkie kontakty ze swoimi klientami i wygodnie nimi zarządzać.
 
-### <a id="3">3. Użyte zależności, technologie oraz środowisko uruchomieniowe aplikacji
+### <a id="3">3. Użyte Technologie
+  C# MVC, ASP.NET CORE, B.Crypt, EntityFrameworkCore, Pomelo.EntityFrameworkCore.MySQL
+  MySQL
 
 Program oparty jest na architekturze ASP.NET Core, językiem programowania kodu źródłowego aplikacji jest C#. 
 
 ### <a id="4">4. Sposób instalacji i uruchomienia
 
+4.1. Należy sklonować repozytorium:
+   ```bash
+   git clone https://github.com/ArthurAndCode/WebAppCRUD.git
+   cd WebAppCRUD
+   ```
+4.2. Uzupełnić swoje dane logowania do MySQL w (`appsettings.json`)
+4.3. Przeprowadzić migrację
+   
+   ```bash
+   dotnet ef migrations add InitialMigration
+   ```
+   ```bash
+   dotnet ef database update
+   ```
+  
 ### <a id="5">5. Obsługa aplikacji oraz jej funkcje
 
 ##### 5.1. Rejestracja
