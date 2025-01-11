@@ -7,7 +7,6 @@
 3. [Użyte Technologie](#3)
 4. [Sposób instalacji i uruchomienia](#4)
 5. [Obsługa aplikacji oraz jej funkcje](#5)
-6. [Podsumowanie](#6)
 
 ### <a id="1"> 1. Wstęp
 
@@ -76,6 +75,3 @@ Każdy kontakt zawiera przycisk służący do usuwania kontaktu, po kliknięciu 
 
 Dostępne poprzez wyłączenie karty w przeglądarce
 
-### <a id="6">6. Podsumowanie
-
-nie wiem napiszcie tu cos, nikt nie zgniął 
