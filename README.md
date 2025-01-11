@@ -2,14 +2,14 @@
 
 ### Spis treści
 
-1. [Wstęp](#wstęp)
+1. [Wstęp](#1)
 2. Założenia i zastosowanie aplikacji
 3. Użyte zależności, technologie oraz środowisko uruchomieniowe programu
 4. Sposób instalacji i uruchomienia
 5. Obsługa aplikacji oraz jej funkcje
 6. Podsumowanie
 
-### 1. Wstęp
+### <a id="1"> 1. Wstęp
 
 Przedmiotem niniejszej dokumentacji technicznej jest aplikacja, w której użytkownik ma możliwość utworzenia konta i zalogowania się na nie,
 a także posiada możliwość dodawania, odczytywania, edytowania i usuwania kontaktów do osób indywidualnych, jak i również biznesowych. 
