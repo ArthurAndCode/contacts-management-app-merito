@@ -3,29 +3,29 @@
 ### Spis treści
 
 1. [Wstęp](#1)
-2. Założenia i zastosowanie aplikacji
-3. Użyte zależności, technologie oraz środowisko uruchomieniowe programu
-4. Sposób instalacji i uruchomienia
-5. Obsługa aplikacji oraz jej funkcje
-6. Podsumowanie
+2. [Założenia i zastosowanie aplikacji](#2)
+3. [Użyte zależności, technologie oraz środowisko uruchomieniowe programu](#3)
+4. [Sposób instalacji i uruchomienia](#4)
+5. [Obsługa aplikacji oraz jej funkcje](#5)
+6. [Podsumowanie](#6)
 
 ### <a id="1"> 1. Wstęp
 
 Przedmiotem niniejszej dokumentacji technicznej jest aplikacja, w której użytkownik ma możliwość utworzenia konta i zalogowania się na nie,
 a także posiada możliwość dodawania, odczytywania, edytowania i usuwania kontaktów do osób indywidualnych, jak i również biznesowych. 
 
-### 2. Założenia i zastosowanie aplikacji
+### <a id="2">2. Założenia i zastosowanie aplikacji
 
 Program w swym założeniu ma pomóc we wprowadzaniu i zapisywaniu nowych kontaktów, a także w ich wygodnym odczycie i modyfikacji. 
 Bardzo dobrze sprawdza się w sytuacji, gdy np. przedstawiciel handlowy dużej firmy chce mieć w jednym miejscu wszystkie kontakty ze swoimi klientami i wygodnie nimi zarządzać.
 
-### 3. Użyte zależności, technologie oraz środowisko uruchomieniowe aplikacji
+### <a id="3">3. Użyte zależności, technologie oraz środowisko uruchomieniowe aplikacji
 
 Program oparty jest na architekturze ASP.NET Core, językiem programowania kodu źródłowego aplikacji jest C#. 
 
-### 4. Sposób instalacji i uruchomienia
+### <a id="4">4. Sposób instalacji i uruchomienia
 
-### 5. Obsługa aplikacji oraz jej funkcje
+### <a id="5">5. Obsługa aplikacji oraz jej funkcje
 
 ##### 5.1. Rejestracja użytkownika
 
@@ -48,4 +48,4 @@ W celu rejestracji nowego konta, należy w polu e-mail wpisać swój adres e-mai
 
 ##### 5.9. Wylogowanie
 
-### 6. Podsumowanie
+### <a id="6">6. Podsumowanie
