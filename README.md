@@ -11,8 +11,8 @@
 
 ### <a id="1"> 1. Wstęp
 
-Przedmiotem niniejszej dokumentacji technicznej jest aplikacja, w której użytkownik ma możliwość utworzenia konta i zalogowania się na nie,
-a także posiada możliwość dodawania, odczytywania, edytowania i usuwania kontaktów do osób indywidualnych, jak i również biznesowych. 
+Przedmiotem niniejszej dokumentacji technicznej jest aplikacja, zapewnijąca możliwość zarzadzania kontaktami użytkowników, mogą oni dodawać, odczytywać, edytować i usuwanć kontakty indywidualne, jak i biznesowe.
+Dostęp do osobistej listy kontaktów zapewnia system rejestracji i logowania
 
 ### <a id="2">2. Założenia i zastosowanie aplikacji
 
