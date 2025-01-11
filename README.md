@@ -27,25 +27,38 @@ Program oparty jest na architekturze ASP.NET Core, językiem programowania kodu 
 
 ### <a id="5">5. Obsługa aplikacji oraz jej funkcje
 
-##### 5.1. Rejestracja użytkownika
+##### 5.1. Rejestracja
 
-Aby mieć możliwość korzystania z aplikacji, należy utworzyć w niej konto. Bezpośrednio po uruchomieniu programu ukazuje się formularz logowania lub rejestracji, przy czym w celu utworzenia konta należy wybrać drugą opcję.
-W celu rejestracji nowego konta, należy w polu e-mail wpisać swój adres e-mail, w polu hasło - dowolne hasło, natomiast w ostatnim polu powtórz hasło - należy powtórzyć wcześniej wymyślone hasło.
+Po kliknięciu w przycik sign up zostajemy przeniesieni na stronę z formularzem do rejestracji konta używtkownika.
 
 ##### 5.2. Logowanie
 
+Przycisk sign in przenosi do strony z formularzed do logowania, jeśli wcześniej utworzyliśmy konto i wprowadzimy prawidłowe dane logowania, zostaniemy przekierowani na strone główną
+
 ##### 5.3. Tworzenie kontaktu indywidualnego
+
+Znajduje się na stronie głównej aplikacji i jest dostępne tylko dla zalogowanych użytkowników, przycisk create new contact przekierowuje do formularza tworzenia kontaktu
 
 ##### 5.4. Tworzenie kontaktu biznesowego
 
+Dostępne tylko dla zalogowanych użytkowników, do formularza prowadzi przycisk create new business contact, wymaga wprowadzenia dodatkowych informacji takich jak nazwa firmy i zajmowana w niej pozycja
+
 ##### 5.5. Wyszukanie kontaktów
 
-##### 5.6. Wyświetlenie wszystkich dostępnych kontaktów
+Przycisk search służy do wyszukania kontaktów podobnych do danych wpisanych w polu należącym do przycisku
 
-##### 5.7. Edytowanie kontaktu
+##### 5.6. Edytowanie kontaktu
 
-##### 5.8. Usuwanie kontaktu
+Każdy kontakt zawiera przycisk przenoszący do formularzu edycji kontaktu
 
-##### 5.9. Wylogowanie
+##### 5.7. Usuwanie kontaktu
+
+Każdy kontakt zawiera przycisk służący do usuwania kontaktu, po kliknięciu zostaniemy przekierowani na stronę z informacjami o kontakcie i potwierdzenie operacji usuwania kontaktu
+
+##### 5.8. Wylogowanie
+
+Dostępne poprzez wyłączenie karty w przeglądarce
 
 ### <a id="6">6. Podsumowanie
+
+nie wiem napiszcie tu cos, nikt nie zgniął 
