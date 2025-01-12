@@ -32,6 +32,7 @@ Program oparty jest na architekturze ASP.NET Core, językiem programowania kodu 
    cd WebAppCRUD
    ```
 4.2. Uzupełnić swoje dane logowania do MySQL w (`appsettings.json`)
+
 4.3. Przeprowadzić migrację
    
    ```bash
