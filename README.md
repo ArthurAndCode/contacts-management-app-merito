@@ -22,7 +22,9 @@ Bardzo dobrze sprawdza się w sytuacji, gdy np. przedstawiciel handlowy dużej f
   C# MVC, ASP.NET CORE, B.Crypt, EntityFrameworkCore, Pomelo.EntityFrameworkCore.MySQL
   MySQL
 
-Program oparty jest na architekturze ASP.NET Core, językiem programowania kodu źródłowego aplikacji jest C#. 
+Program oparty jest na architekturze ASP.NET Core, językiem programowania kodu źródłowego aplikacji jest C#.
+
+Architektura bazy danych jest oparta na systemie zarządzania MySQL. Baza zawiera tabele użytkowników (users), kontaktów indywidualnych (contacts) oraz kontaktów biznesowych (business contacts). Tabela użytkowników zawiera kolumnę z unikalnym numerem ID dla każdego konta, adresami mailowymi, zaszyfrowanymi hasłami oraz z kolekcjami kontaktów, które są przypisane do poszczególnych użytkowników. Z kolei tabela kontaktów zawiera kolumny: ID kontaktu, imię, adres e-mail, numer telefonu oraz ID konta, do którego przypisany jest dany kontakt. Tabela kontaktów biznesowych zawiera ten sam zestaw kolumn co tabela kontaktów indywidualnych (w programie klasa BusinessContact dziedziczy te kolumny z klasy Contact, która odnosi się do kontaktu indywidualnego), natomiast oprócz tego posiada dwie dodatkowe kolumny, czyli nazwa firmy oraz pozycja w tej firmie osoby, do której kontakt się odnosi.
 
 ### <a id="4">4. Sposób instalacji i uruchomienia
 
@@ -49,7 +51,7 @@ Po kliknięciu w przycik sign up zostajemy przeniesieni na stronę z formularzem
 
 ##### 5.2. Logowanie
 
-Przycisk sign in przenosi do strony z formularzed do logowania, jeśli wcześniej utworzyliśmy konto i wprowadzimy prawidłowe dane logowania, zostaniemy przekierowani na strone główną
+Przycisk sign in przenosi do strony z formularzem do logowania, jeśli wcześniej utworzyliśmy konto i wprowadzimy prawidłowe dane logowania, zostaniemy przekierowani na strone główną
 
 ##### 5.3. Tworzenie kontaktu indywidualnego
 
