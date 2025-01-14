@@ -8,7 +8,8 @@
 4. [Sposób instalacji i uruchomienia](#4)
 5. [Obsługa aplikacji oraz jej funkcje](#5)
 6. [Dlaczego OOP?](#6)
-
+7. [Stoły i relacje](#7)
+   
 ### <a id="1"> 1. Wstęp
 
 Przedmiotem niniejszej dokumentacji technicznej jest aplikacja, zapewnijąca możliwość zarzadzania kontaktami użytkowników, mogą oni dodawać, odczytywać, edytować i usuwanć kontakty indywidualne, jak i biznesowe.
@@ -111,3 +112,62 @@ Nacisk na szybkość implementacji
 Ponieważ projekt miał jasno określone cele i ograniczoną skalę, priorytetem było dostarczenie funkcjonalności w jak najkrótszym czasie.
 
 Podsumowując, programowanie obiektowe zapewniło solidne podstawy dla aplikacji, umożliwiając jej łatwą rozbudowę, testowanie i utrzymanie, natomiast decyzja o pominięciu interfejsów była uzasadniona prostotą wymagań projektu.
+
+### 7. <a id="7"> Stoły i relacje
+
+### Users Table
+| Column Name     | Data Type   | Constraints                      |
+|-----------------|-------------|----------------------------------|
+| `Id`            | INT         | Primary Key, Auto Increment     |
+| `Email`         | LONGTEXT    | Not Null                       |
+| `PasswordHash`  | LONGTEXT    | Not Null                       |
+
+### Contacts Table
+| Column Name      | Data Type   | Constraints                     |
+|------------------|-------------|---------------------------------|
+| `Id`             | INT         | Primary Key, Auto Increment    |
+| `ContactType`    | VARCHAR(21) | Not Null                       |
+| `Email`          | LONGTEXT    | Not Null                       |
+| `Name`           | LONGTEXT    | Not Null                       |
+| `PhoneNumber`    | LONGTEXT    | Not Null                       |
+| `UserId`         | INT         | Foreign Key, Not Null          |
+
+### BusinessContacts Table (Subtype of Contacts)
+| Column Name     | Data Type   | Constraints                     |
+|-----------------|-------------|---------------------------------|
+| `CompanyName`   | LONGTEXT    | Not Null                       |
+| `Position`      | LONGTEXT    | Not Null                       |
+
+Przegląd relacji
+Użytkownik może mieć wiele Kontaktów.
+Każdy Kontakt należy do jednego Użytkownika.
+Kontakty są podzielone na ogólne kontakty i kontakty biznesowe za pomocą strategii Table-Per-Hierarchy (TPH) z wykorzystaniem kolumny ContactType.
+
+---
+
+## Sample MySQL Schema
+```sql
+CREATE TABLE Users (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Email LONGTEXT NOT NULL,
+    PasswordHash LONGTEXT NOT NULL
+);
+
+CREATE TABLE Contacts (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    ContactType VARCHAR(21) NOT NULL,
+    Email LONGTEXT NOT NULL,
+    Name LONGTEXT NOT NULL,
+    PhoneNumber LONGTEXT NOT NULL,
+    UserId INT NOT NULL,
+    FOREIGN KEY (UserId) REFERENCES Users(Id) ON DELETE CASCADE
+);
+
+CREATE TABLE BusinessContacts (
+    Id INT PRIMARY KEY, -- Inherits from Contacts
+    CompanyName LONGTEXT NOT NULL,
+    Position LONGTEXT NOT NULL,
+    FOREIGN KEY (Id) REFERENCES Contacts(Id) ON DELETE CASCADE
+);
+
+
