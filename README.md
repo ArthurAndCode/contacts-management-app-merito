@@ -20,10 +20,16 @@ Dostęp do osobistej listy kontaktów zapewnia system rejestracji i logowania.
 Program w swym założeniu ma pomóc we wprowadzaniu i zapisywaniu nowych kontaktów, a także w ich wygodnym odczycie i modyfikacji. 
 Bardzo dobrze sprawdza się w sytuacji, gdy np. przedstawiciel handlowy dużej firmy chce mieć w jednym miejscu wszystkie kontakty ze swoimi klientami i wygodnie nimi zarządzać.
 
-### <a id="3">3. Użyte Technologie
-  C# MVC, ASP.NET CORE, B.Crypt, EntityFrameworkCore, Pomelo.EntityFrameworkCore.MySQL
-  MySQL
+### <a id="3">3. Użyte Technologie  
+- **C#**:  
+  - ASP.NET Core (MVC Framework)  
+  - Entity Framework Core (ORM)  
+  - Pomelo.EntityFrameworkCore.MySQL (MySQL Provider)  
+  - Bcrypt (Haszowanie haseł)  
 
+- **MySQL**:  
+  - Relacyjna baza danych wykorzystywana do przechowywania danych aplikacji  
+  
 Program oparty jest na architekturze ASP.NET Core, językiem programowania kodu źródłowego aplikacji jest C#. 
 
 ### <a id="4">4. Sposób instalacji i uruchomienia
