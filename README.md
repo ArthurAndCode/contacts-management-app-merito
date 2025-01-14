@@ -29,8 +29,6 @@ Bardzo dobrze sprawdza się w sytuacji, gdy np. przedstawiciel handlowy dużej f
 
 - **MySQL**:  
   - Relacyjna baza danych wykorzystywana do przechowywania danych aplikacji  
-  
-Program oparty jest na architekturze ASP.NET Core, językiem programowania kodu źródłowego aplikacji jest C#. 
 
 ### <a id="4">4. Sposób instalacji i uruchomienia
 
