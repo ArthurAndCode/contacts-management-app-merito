@@ -74,5 +74,5 @@ Każdy kontakt zawiera przycisk służący do usuwania kontaktu, po kliknięciu 
 
 ##### 5.8. Wylogowanie
 
-Dostępne poprzez wyłączenie karty w przeglądarce
+Dostępne poprzez przycisk
 
