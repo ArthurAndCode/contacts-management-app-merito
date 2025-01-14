@@ -7,6 +7,7 @@
 3. [Użyte Technologie](#3)
 4. [Sposób instalacji i uruchomienia](#4)
 5. [Obsługa aplikacji oraz jej funkcje](#5)
+6. [Dlaczego OOP?](#6)
 
 ### <a id="1"> 1. Wstęp
 
@@ -76,3 +77,37 @@ Każdy kontakt zawiera przycisk służący do usuwania kontaktu, po kliknięciu 
 
 Dostępne poprzez przycisk
 
+### <a id="6"> 6. Dlaczego OOP
+
+Dlaczego zastosowano programowanie obiektowe (OOP)?
+Programowanie obiektowe zostało zastosowane w aplikacji ze względu na jego liczne zalety w organizacji i utrzymaniu kodu.
+
+Modularność i przejrzystość kodu
+Dzięki OOP, kod został podzielony na klasy reprezentujące konkretne elementy aplikacji, takie jak użytkownicy czy kontakty. Każda klasa odpowiada za określoną funkcjonalność, co zwiększa czytelność i ułatwia rozumienie działania systemu.
+
+Reużywalność kodu
+W aplikacji wykorzystano dziedziczenie i polimorfizm. Na przykład kontakty indywidualne i biznesowe mogą dzielić wspólne właściwości i metody dzięki klasie bazowej. Pozwala to na unikanie duplikacji kodu i ułatwia jego rozwój.
+
+Enkapsulacja
+Dzięki enkapsulacji logika aplikacji oraz dane są chronione przed nieautoryzowanym dostępem, co zwiększa bezpieczeństwo. Publiczne interfejsy (metody i właściwości) umożliwiają interakcję z obiektami w kontrolowany sposób.
+
+Łatwość testowania i utrzymania
+Dzięki rozdzieleniu odpowiedzialności w różnych klasach, każda z nich może być testowana niezależnie. W przypadku zmian lub nowych wymagań można modyfikować istniejące klasy bez wpływu na całą aplikację.
+
+Rezultaty zastosowania OOP
+Elastyczność: Rozszerzanie funkcjonalności aplikacji, np. dodanie nowych typów kontaktów, stało się łatwiejsze dzięki dziedziczeniu.
+Zarządzalność: Łatwiejsze zarządzanie złożonością aplikacji dzięki modularnej strukturze.
+Czytelność: Kod jest bardziej intuicyjny i czytelny zarówno dla autora, jak i dla innych programistów.
+Dlaczego nie zastosowano interfejsów?
+Decyzja o pominięciu interfejsów wynikała z prostoty wymagań projektu. Interfejsy są użyteczne w bardziej złożonych projektach, w których różne klasy implementują wspólne kontrakty. W tym przypadku:
+
+Brak konieczności wielokrotnej implementacji kontraktów
+W aplikacji każda klasa pełni swoją specyficzną rolę i nie ma potrzeby definiowania wspólnych kontraktów, które miałyby być implementowane przez wiele klas.
+
+Mniejsza złożoność projektu
+Zastosowanie interfejsów mogłoby wprowadzić dodatkową warstwę abstrakcji, która w tym projekcie nie była konieczna. Upraszcza to strukturę kodu i pozwala skupić się na implementacji kluczowych funkcji.
+
+Nacisk na szybkość implementacji
+Ponieważ projekt miał jasno określone cele i ograniczoną skalę, priorytetem było dostarczenie funkcjonalności w jak najkrótszym czasie.
+
+Podsumowując, programowanie obiektowe zapewniło solidne podstawy dla aplikacji, umożliwiając jej łatwą rozbudowę, testowanie i utrzymanie, natomiast decyzja o pominięciu interfejsów była uzasadniona prostotą wymagań projektu.
