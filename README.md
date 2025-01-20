@@ -6,8 +6,7 @@ asdadsdas
 d
 asda
 d
-
-
+<img src="IMAGESm/Zrzut%20ekranu%202025-01-20%20204947.png"  height="300">
 asd
 asdasdada
 ds
