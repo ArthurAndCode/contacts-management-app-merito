@@ -39,20 +39,26 @@ Bardzo dobrze sprawdza się w sytuacji, gdy np. przedstawiciel handlowy dużej f
    ```
 4.2. Uzupełnić swoje dane logowania do MySQL w (`appsettings.json`)
 
+<img src="Images/Zrzut%20ekranu%202025-01-20%20211511.png" >
+
 4.3. Przeprowadzić migrację
    
    ```bash
    dotnet ef migrations add InitialMigration
    ```
+<img src="Images/Zrzut%20ekranu%202025-01-20%20212314.png" >
    ```bash
    dotnet ef database update
    ```
+   <img src="Images/Zrzut%20ekranu%202025-01-20%20212333.png" >
   
 ### <a id="5">5. Obsługa aplikacji oraz jej funkcje
 
 ##### 5.1. Rejestracja
 
 Po kliknięciu w przycik sign up zostajemy przeniesieni na stronę z formularzem do rejestracji konta używtkownika.
+
+<img src="Images/Zrzut%20ekranu%202025-01-20%20212436.png" >
 
 ##### 5.2. Logowanie
 
@@ -66,9 +72,14 @@ Znajduje się na stronie głównej aplikacji i jest dostępne tylko dla zalogowa
 
 Dostępne tylko dla zalogowanych użytkowników, do formularza prowadzi przycisk create new business contact, wymaga wprowadzenia dodatkowych informacji takich jak nazwa firmy i zajmowana w niej pozycja
 
+<img src="Images/Zrzut%20ekranu%202025-01-20%20213036.png" >
+
 ##### 5.5. Wyszukanie kontaktów
 
 Przycisk search służy do wyszukania kontaktów podobnych do danych wpisanych w polu należącym do przycisku
+
+<img src="Images/Zrzut%20ekranu%202025-01-20%20213244.png" >
+<img src="Images/Zrzut%20ekranu%202025-01-20%20213310.png" >
 
 ##### 5.6. Edytowanie kontaktu
 
@@ -89,6 +100,10 @@ Programowanie obiektowe zostało zastosowane w aplikacji ze względu na jego lic
 
 Modularność i przejrzystość kodu
 Dzięki OOP, kod został podzielony na klasy reprezentujące konkretne elementy aplikacji, takie jak użytkownicy czy kontakty. Każda klasa odpowiada za określoną funkcjonalność, co zwiększa czytelność i ułatwia rozumienie działania systemu.
+
+<img src="Images/Zrzut%20ekranu%202025-01-20%20212212.png" >
+<img src="Images/Zrzut%20ekranu%202025-01-20%20212153.png" >
+<img src="Images/Zrzut%20ekranu%202025-01-20%20204947.png" >
 
 Reużywalność kodu
 W aplikacji wykorzystano dziedziczenie i polimorfizm. Na przykład kontakty indywidualne i biznesowe mogą dzielić wspólne właściwości i metody dzięki klasie bazowej. Pozwala to na unikanie duplikacji kodu i ułatwia jego rozwój.
