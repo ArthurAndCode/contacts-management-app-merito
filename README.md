@@ -51,7 +51,6 @@ Bardzo dobrze sprawdza się w sytuacji, gdy np. przedstawiciel handlowy dużej f
    ```bash
    dotnet ef database update
    ```
-   <img src="Images/Zrzut%20ekranu%202025-01-20%20212333.png" >
   
 ### <a id="5">5. Obsługa aplikacji oraz jej funkcje
 
@@ -101,8 +100,6 @@ Programowanie obiektowe zostało zastosowane w aplikacji ze względu na jego lic
 
 Modularność i przejrzystość kodu
 Dzięki OOP, kod został podzielony na klasy reprezentujące konkretne elementy aplikacji, takie jak użytkownicy czy kontakty. Każda klasa odpowiada za określoną funkcjonalność, co zwiększa czytelność i ułatwia rozumienie działania systemu.
-
-<img src="Images/Zrzut%20ekranu%202025-01-20%20212212.png" >
 
 Reużywalność kodu
 W aplikacji wykorzystano dziedziczenie i polimorfizm. Na przykład kontakty indywidualne i biznesowe mogą dzielić wspólne właściwości i metody dzięki klasie bazowej. Pozwala to na unikanie duplikacji kodu i ułatwia jego rozwój.
